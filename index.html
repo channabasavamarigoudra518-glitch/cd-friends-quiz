@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffedf4"><title>C❤️D | Friends Quiz</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Noto Sans Kannada',Arial,sans-serif;color:#34243a;background:linear-gradient(160deg,#fff1f6,#f0f4ff);min-height:100vh}.hero{text-align:center;padding:30px 18px 22px;background:linear-gradient(135deg,#ffb8d0,#c8c8ff);border-radius:0 0 30px 30px}.heart{font-size:35px}.hero h1{margin:5px 0;font-size:34px}.hero p{margin:8px auto 0;max-width:330px;line-height:1.5}.wrap{max-width:560px;margin:20px auto;padding:0 14px 28px}.card{background:#fff;border-radius:23px;padding:20px;box-shadow:0 12px 32px #7e579018}.tag{display:inline-block;background:#fff0f6;color:#b02e68;padding:7px 12px;border-radius:30px;font-weight:700;font-size:12px}.meta{display:flex;justify-content:space-between;color:#7c6c82;font-size:13px;margin:16px 0}.q{font-size:21px;line-height:1.45;margin:18px 0}.options{display:grid;gap:10px}.option{border:2px solid #eee4f0;background:#fff;border-radius:15px;padding:13px;text-align:left;font-size:16px;color:#34243a;cursor:pointer}.option.selected{border-color:#db5c96;background:#fff0f6}.option.correct{border-color:#28a56a;background:#eafff3}.option.wrong{border-color:#df5965;background:#fff0f1}.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 15px;font-size:15px;font-weight:750;cursor:pointer}.primary{background:#d94f91;color:white;flex:1}.soft{background:#f3edf6;color:#51415a}.hidden{display:none}.result{text-align:center}.score{font-size:42px;font-weight:850;color:#d94f91;margin:12px}.result p{line-height:1.6}.note{font-size:12px;color:#87798b;text-align:center;padding:18px 5px}.share{width:100%;margin-top:12px;background:#28213b;color:#fff}.small{font-size:12px;color:#847589;margin-top:15px;line-height:1.5}
+</style></head>
+<body>
+<header class="hero"><div class="heart">💗 ✨ 💗</div><h1>C❤️D</h1><p>ನಮ್ಮ friendship ಎಷ್ಟು strong? ಈ cute quiz ಮಾಡಿ ನೋಡಿ! 🫶</p></header>
+<main class="wrap">
+<section class="card" id="quiz"><span class="tag">FRIENDS QUIZ ✨</span><div class="meta"><span id="progress">ಪ್ರಶ್ನೆ 1</span><span id="points">Score: 0</span></div><h2 class="q" id="question"></h2><div class="options" id="options"></div><div class="actions"><button class="btn soft" id="restart">ಮತ್ತೆ ಶುರು</button><button class="btn primary" id="next">ಮುಂದೆ →</button></div><p class="small">ಪ್ರತಿ ಪ್ರಶ್ನೆಗೆ ನಿನಗೆ ಸರಿಯೆನಿಸುವ option ಆಯ್ಕೆ ಮಾಡು 💕</p></section>
+<section class="card result hidden" id="result"><div style="font-size:38px">🎉💖🎉</div><h2>Quiz ಮುಗಿಯಿತು!</h2><div class="score" id="finalscore"></div><p id="message"></p><button class="btn primary" id="again">ಮತ್ತೆ ಆಡೋಣ</button><button class="btn share" id="share">🔗 Quiz link share ಮಾಡು</button></section>
+<p class="note">Made with ❤️ C❤️D</p></main>
+<script>
+// Questions and correct answers can be edited here.
+const questions=[
+{q:'ನಮ್ಮ friendship ನಲ್ಲಿ ಮುಖ್ಯವಾದದ್ದು ಯಾವುದು?',options:['ನಂಬಿಕೆ 🤝','ಜಗಳ 😅','ಮಾತಾಡದೇ ಇರುವುದು 🙈','ಏನೂ ಇಲ್ಲ'],answer:0},
+{q:'Friend ಬೇಸರದಲ್ಲಿದ್ದರೆ ಏನು ಮಾಡಬೇಕು?',options:['Ignore ಮಾಡಬೇಕು','ಕೇಳಿ support ಮಾಡಬೇಕು 💗','ನಗಬೇಕು','Block ಮಾಡಬೇಕು'],answer:1},
+{q:'ಒಳ್ಳೆಯ friend ಹೇಗಿರಬೇಕು?',options:['ಅಗತ್ಯವಿದ್ದಾಗ ಮಾತ್ರ','ನಿಜ ಹೇಳುವವನು/ವಳು 💬','Secret ಹೇಳುವವನು','ಯಾವಾಗಲೂ ಜಗಳ'],answer:1},
+{q:'Friendship ಉಳಿಸಿಕೊಳ್ಳಲು ಯಾವುದು ಮುಖ್ಯ?',options:['Ego','ನಂಬಿಕೆ ಮತ್ತು ಗೌರವ 🫶','Competition','ಸುಳ್ಳು'],answer:1},
+{q:'ತಪ್ಪು ಅರ್ಥವಾದರೆ ಏನು ಮಾಡಬೇಕು?',options:['ಮಾತು ನಿಲ್ಲಿಸಬೇಕು','ಕೋಪ ಮಾಡಿಕೊಳ್ಳಬೇಕು','ಶಾಂತವಾಗಿ ಮಾತಾಡಬೇಕು 💞','ಎಲ್ಲರಿಗೂ ಹೇಳಬೇಕು'],answer:2},
+{q:'ನಿಜವಾದ friendship ಅಂದ್ರೆ?',options:['ಒಬ್ಬರನ್ನೊಬ್ಬರು ಗೌರವಿಸುವುದು 💖','ಯಾವಾಗಲೂ ಒಪ್ಪಿಕೊಳ್ಳುವುದು','ಒಬ್ಬರ ಮೇಲೆ ಒಬ್ಬರು control','ಲಾಭಕ್ಕಾಗಿ ಇರುವುದು'],answer:0},
+{q:'Friend ನ success ಕಂಡಾಗ?',options:['ಅಸೂಯೆ ಪಡಬೇಕು','ಸಂತೋಷಪಟ್ಟು encourage ಮಾಡಬೇಕು 🎉','Ignore ಮಾಡಬೇಕು','ಹೋಲಿಕೆ ಮಾಡಬೇಕು'],answer:1},
+{q:'C❤️D friendship ಗೆ ಯಾವ emoji ಸೂಕ್ತ?',options:['💗','🤝','✨','ಮೇಲಿನ ಎಲ್ಲವೂ 😍'],answer:3}
+];
+let index=0,score=0,chosen=null,locked=false;const qEl=document.getElementById('question'),opts=document.getElementById('options'),progress=document.getElementById('progress'),points=document.getElementById('points'),next=document.getElementById('next');
+function render(){locked=false;chosen=null;let item=questions[index];progress.textContent=`ಪ್ರಶ್ನೆ ${index+1} / ${questions.length}`;points.textContent=`Score: ${score}`;qEl.textContent=item.q;opts.innerHTML='';item.options.forEach((op,i)=>{let b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+op;b.onclick=()=>{if(locked)return;chosen=i;document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')};opts.appendChild(b)});next.textContent=index===questions.length-1?'Result ನೋಡಿ 🎉':'ಮುಂದೆ →'}
+next.onclick=()=>{if(!locked){if(chosen===null){alert('ಮೊದಲು ಒಂದು option ಆಯ್ಕೆ ಮಾಡು 😊');return}locked=true;let item=questions[index],buttons=[...document.querySelectorAll('.option')];buttons[item.answer].classList.add('correct');if(chosen===item.answer)score++;else buttons[chosen].classList.add('wrong');points.textContent=`Score: ${score}`;next.textContent=index===questions.length-1?'Result ನೋಡಿ 🎉':'Continue →';return}if(index<questions.length-1){index++;render()}else showResult()};
+function showResult(){document.getElementById('quiz').classList.add('hidden');document.getElementById('result').classList.remove('hidden');document.getElementById('finalscore').textContent=`${score} / ${questions.length}`;document.getElementById('message').textContent=score===questions.length?'Wow! ನಿನ್ನ answers super! Friendship vibes 💖':score>=5?'ಚೆನ್ನಾಗಿದೆ! Friendship ಬಗ್ಗೆ ಚೆನ್ನಾಗಿ ಯೋಚಿಸುತ್ತೀಯ 🫶':'Cute try! Friendship quiz ಮತ್ತೆ ಆಡೋಣ 💗'};}
+function restart(){index=0;score=0;document.getElementById('quiz').classList.remove('hidden');document.getElementById('result').classList.add('hidden');render()};document.getElementById('restart').onclick=restart;document.getElementById('again').onclick=restart;
+document.getElementById('share').onclick=async()=>{let url=location.href;try{if(navigator.share)await navigator.share({title:'C❤️D Friends Quiz',text:'C❤️D Friends Quiz ಆಡು 💗',url});else{await navigator.clipboard.writeText(url);alert('Quiz link copy ಆಯಿತು!')} }catch(e){}};render();
+</script></body></html>
